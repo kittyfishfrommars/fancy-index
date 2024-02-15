@@ -1,0 +1,134 @@
+# Documnentation
+# https://httpd.apache.org/docs/2.2/mod/mod_autoindex.html
+
+
+## Begin - Auth
+# Generator: https://www.askapache.com/online-tools/htpasswd-generator/
+# To enable password-protection uncomment the lines below and create a .htpasswd file
+# put .htpasswd preferably outside your public root
+
+# AuthType Basic
+# AuthName "Protected"
+# AuthUserFile /path/to/parent-folder/docs.htpasswd
+# Require valid-user
+
+## End - Auth
+
+# INDEX
+Options +Indexes +FollowSymLinks
+IndexOptions FancyIndexing NameWidth=* FoldersFirst IgnoreCase IconsAreLinks IconHeight=16 IconWidth=16 SuppressDescription SuppressHTMLPreamble 
+# IndexOptions SuppressIcon SuppressHTMLPreamble IconsAreLinks SuppressRules
+
+# DO NOT SHOW THESE FILES
+IndexIgnoreReset ON
+IndexIgnore fancy-index .htaccess *~ *.bak *.old robots.txt .ftpquota .DS_Store 
+
+	  # CSS STYLES
+	  # IndexStyleSheet /fancy-index/style.css
+	  
+	  # SPECIFY HEADER FILE
+	  HeaderName /fancy-index/header.shtml
+
+	  # SPECIFY FOOTER FILE
+	  ReadmeName /fancy-index/footer.html
+
+# SECURITY
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh|inc|bak)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+
+# DIRECTORY CUSTOMIZATION
+<IfModule mod_autoindex.c>
+
+	# DEFAULT ICON
+	DefaultIcon /fancy-index/icons/file-text.svg
+
+	AddIcon /fancy-index/icons/back.svg ..
+	AddIcon /fancy-index/icons/github.svg .github
+	AddIcon /fancy-index/icons/nodejs.svg node_modules
+	AddIcon /fancy-index/icons/file-directory.svg ^^DIRECTORY^^
+	AddIcon /fancy-index//icons/blank.gif ^^BLANKICON^^
+
+	# SPECIFIC FILE ICONS
+	# https://github.com/file-icons/source
+	AddIcon /fancy-index/icons/file-binary.svg .com .exe
+	AddIcon /fancy-index/icons/file-code.svg .c .h .mustache .rust .source .apache .yml .jade
+	AddIcon /fancy-index/icons/file-media.svg .png .jpg .jpeg .webp .gif .bmp .mp4 .webm .ogv .mov .ico
+	AddIcon /fancy-index/icons/file-pdf.svg .pdf
+	AddIcon /fancy-index/icons/file-text.svg .txt .srt README readme Procfile
+	AddIcon /fancy-index/icons/file-zip.svg .zip .z .gz .Z .tgz .tar.gz .tar .rar
+	AddIcon /fancy-index/icons/gear.svg .htaccess .env .env-dev .env-production .env-staging
+	AddIcon /fancy-index/icons/config.svg .conf .ini .cfg .prefs
+	AddIcon /fancy-index/icons/less.svg .less
+	AddIcon /fancy-index/icons/css.svg .css
+	AddIcon /fancy-index/icons/html.svg .html .htm
+	AddIcon /fancy-index/icons/coffee.svg .coffee
+	AddIcon /fancy-index/icons/java.svg .java
+	AddIcon /fancy-index/icons/markdown.svg .markdown .md
+	AddIcon /fancy-index/icons/eslint.svg *.eslintignore *.eslintrc.js *.eslintrc.json *.eslintrc *.eslintrc.yml
+	AddIcon /fancy-index/icons/webpack.svg webpack.config.js
+	AddIcon /fancy-index/icons/rollup.svg rollup.config.js
+	AddIcon /fancy-index/icons/postcss.svg postcss.config.js *.postcssrc *.postcssrc.json *.postcssrc.js *.postcssrc.yml
+	AddIcon /fancy-index/icons/grunt.svg gruntfile.js Gruntfile.js
+	AddIcon /fancy-index/icons/gulp.svg gulpfile.js Gulpfile.js
+	AddIcon /fancy-index/icons/js.svg .js
+	AddIcon /fancy-index/icons/composer.svg composer.json composer.lock composer.phar
+	AddIcon /fancy-index/icons/bower.svg bower.json
+	AddIcon /fancy-index/icons/npm.svg package.json package-lock.json
+	AddIcon /fancy-index/icons/settings.svg .json
+	AddIcon /fancy-index/icons/mustache.svg .mustache
+	AddIcon /fancy-index/icons/php.svg .php
+	AddIcon /fancy-index/icons/python.svg .py
+	AddIcon /fancy-index/icons/ruby.svg .rb
+	AddIcon /fancy-index/icons/rust.svg .rust
+	AddIcon /fancy-index/icons/sass.svg .sass
+	AddIcon /fancy-index/icons/scss.svg .scss
+	AddIcon /fancy-index/icons/svg.svg .svg .svgx .eps
+	AddIcon /fancy-index/icons/xml.svg .xml
+	AddIcon /fancy-index/icons/typescript.svg .ts
+	AddIcon /fancy-index/icons/vue.svg .vue
+	AddIcon /fancy-index/icons/yarn.svg yarn.lock
+	AddIcon /fancy-index/icons/babel.svg *.babelrc
+	AddIcon /fancy-index/icons/git.svg *.gitignore *.gitattributes
+	AddIcon /fancy-index/icons/editor-config.svg .editorconfig
+	AddIcon /fancy-index/icons/shopify.svg .liquid
+	AddIcon /fancy-index/icons/nunjucks.svg .nunjucks
+	AddIcon /fancy-index/icons/pug.svg .pug
+	AddIcon /fancy-index/icons/adobe-photoshop.svg .psd
+	AddIcon /fancy-index/icons/adobe-illustrator.svg .ai
+	AddIcon /fancy-index/icons/stylus.svg .styl
+	AddIcon /fancy-index/icons/terminal.svg .sh .bash
+	AddIcon /fancy-index/icons/database.svg .sql .mysql .sqlite .dsql .db
+	AddIcon /fancy-index/icons/vagrant.svg vagrantfile Vagrantfile
+	AddIcon /fancy-index/icons/file-word.svg .doc .docx
+	AddIcon /fancy-index/icons/file-excel.svg .xls .xlsx
+	AddIcon /fancy-index/icons/yaml.svg .yml .yaml
+	AddIcon /fancy-index/icons/brainfuck.svg .b
+	AddIcon /fancy-index/icons/cobol.svg .cbl .cob .cpy
+	AddIcon /fancy-index/icons/docker.svg docker-compose.yml
+	AddIcon /fancy-index/icons/virtualbox.svg .ova .vbox
+
+
+	# ICON DESCRIPTIONS
+	AddAlt "PDF" *.pdf
+	AddAlt "DOC" *.doc
+	AddAlt "DOC" *.docx
+	AddAlt "XLS" *.xls
+	AddAlt "XLS" *.xlsx
+	AddAlt "ZIP" *.zip
+	AddAlt "TTF" *.ttf
+	AddAlt "PSD" *.psd
+	AddAlt "EPS" *.eps
+	AddAlt "SVG" *.scv
+	AddAlt "JPG" *.jpg
+	AddAlt "JPG" *.jpeg
+	AddAlt "HTM" *.htm
+	AddAlt "HTM" *.html
+</IfModule>
+
+# Begin - Webhost Provider
+#KONSOLEH AREA START - PLEASE DO NOT EDIT MANUALLY BETWEEN THESE LINES
+
+#KONSOLEH AREA END - PLEASE ADD MANUAL CHANGES BELOW
+# End - Webhost Provider

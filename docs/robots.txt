@@ -1,0 +1,3 @@
+# DISABLE ALL Spiders
+User-agent: *
+Disallow: /
