@@ -2,7 +2,7 @@
 # https://httpd.apache.org/docs/2.2/mod/mod_autoindex.html
 
 
-## Begin - Auth
+## BEGIN - AUTH
 # Generator: https://www.askapache.com/online-tools/htpasswd-generator/
 # To enable password-protection uncomment the lines below and create a .htpasswd file
 # put .htpasswd preferably outside your public root
@@ -11,13 +11,17 @@
 # AuthName "Protected"
 # AuthUserFile /path/to/parent-folder/docs.htpasswd
 # Require valid-user
-
-## End - Auth
+## END - AUTH
 
 # INDEX
 Options +Indexes +FollowSymLinks
 IndexOptions FancyIndexing NameWidth=* FoldersFirst IgnoreCase IconsAreLinks IconHeight=16 IconWidth=16 SuppressDescription SuppressHTMLPreamble 
+
+# ALTERNATIVE OPTIONS
 # IndexOptions SuppressIcon SuppressHTMLPreamble IconsAreLinks SuppressRules
+
+# REVERSE INDEX ORDER, 99-01 / Z-A, USEFUL FOR DATE SORT
+# IndexOrderDefault Descending Name
 
 # DO NOT SHOW THESE FILES
 IndexIgnoreReset ON
@@ -126,9 +130,3 @@ Deny from all
 	AddAlt "HTM" *.htm
 	AddAlt "HTM" *.html
 </IfModule>
-
-# Begin - Webhost Provider
-#KONSOLEH AREA START - PLEASE DO NOT EDIT MANUALLY BETWEEN THESE LINES
-
-#KONSOLEH AREA END - PLEASE ADD MANUAL CHANGES BELOW
-# End - Webhost Provider
